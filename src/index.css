@@ -1,1 +1,15 @@
 @import 'tailwindcss';
+@plugin 'daisyui';
+
+@theme {
+  --font-hepta-slab: 'Hepta Slab', serif;
+  --font-ibm-plex-sans: 'IBM Plex Sans KR', sans-serif;
+  --font-playfair-display: 'Playfair Display', serif;
+  --font-alumni-sans: 'Alumni Sans', sans-serif;
+  --font-beau-rivage: 'Beau Rivage', cursive;
+  --font-noto-serif: 'Noto Serif KR', serif;
+
+  --color-character-blue: #00113c;
+  --color-character-red: #800001;
+  --color-background: #c3c3c3;
+}
