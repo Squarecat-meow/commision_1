@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import type { IPostList } from '../../dto/notion.d.ts';
 
 function PostListItem({ element }: { element: IPostList }) {
@@ -5,29 +6,34 @@ function PostListItem({ element }: { element: IPostList }) {
     timeZone: 'Asia/Seoul',
   });
   return (
-    <li className="flex flex-col p-2 gap-2 not-last:border-b not-last:border-b-background grow">
-      <h1 className="text-3xl font-noto-serif font-bold">{element.title}</h1>
-      <div className="flex items-center">
-        <div className="avatar-group -space-x-4">
-          {element.author.map((el) => (
-            <div className="avatar">
-              <div className="w-6 rounded-full">
-                <img src={el.avatarUrl} alt={`${el.name}의 아바타`} />
+    <Link
+      to={`/main/board/${element.id}`}
+      className="flex flex-col p-2 gap-2 not-last:border-b not-last:border-b-background grow"
+    >
+      <li>
+        <h1 className="text-3xl font-noto-serif font-bold">{element.title}</h1>
+        <div className="flex items-center">
+          <div className="avatar-group -space-x-4">
+            {element.author.map((el) => (
+              <div key={el.name} className="avatar">
+                <div className="w-6 rounded-full">
+                  <img src={el.avatarUrl} alt={`${el.name}의 아바타`} />
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+          {element.author.map((el) => (
+            <span key={el.name} className="text-sm text-slate-600 ml-2">
+              {el.name}
+            </span>
           ))}
         </div>
-        {element.author.map((el) => (
-          <span key={el.name} className="text-sm text-slate-600 ml-2">
-            {el.name}
-          </span>
-        ))}
-      </div>
-      <div className="flex items-center gap-2">
-        <span className="text-slate-500 text-sm">{element.category}</span>
-        <span className="text-slate-400 text-xs">{createdAt}</span>
-      </div>
-    </li>
+        <div className="flex items-center gap-2">
+          <span className="text-slate-500 text-sm">{element.category}</span>
+          <span className="text-slate-400 text-xs">{createdAt}</span>
+        </div>
+      </li>
+    </Link>
   );
 }
 
