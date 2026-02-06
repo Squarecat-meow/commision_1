@@ -4,6 +4,7 @@ import { Loader2Icon } from 'lucide-react';
 import type { ExtendedRecordMap } from 'notion-types';
 import { NotionRenderer } from 'react-notion-x';
 import { useParams } from 'react-router';
+import Authors from '../../components/Authors';
 
 function Post() {
   const { id } = useParams();
@@ -18,23 +19,20 @@ function Post() {
   });
 
   return (
-    <main>
-      {!isLoading && recordMap ? (
-        <>
+          <div className="flex items-center gap-2 mb-2">
+            <Authors authors={properties.작성자.people} />
+          </div>
           <NotionRenderer
-            recordMap={recordMap}
-            fullPage
+            recordMap={data?.recordMap}
             className="rounded-xl "
             disableHeader
             showTableOfContents
           />
-        </>
-      ) : isError && error ? (
-        <h1 className="text-3xl font-bold">에러: {error.message}</h1>
+        </div>
       ) : (
         <Loader2Icon className="animate-spin" />
       )}
-    </main>
+    </>
   );
 }
 
