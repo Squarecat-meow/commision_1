@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@notionhq/client':
+        specifier: ^5.9.0
+        version: 5.9.0
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.1.18(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -406,6 +409,10 @@ packages:
     peerDependencies:
       katex: '>=0.9'
       react: '>=16'
+
+  '@notionhq/client@5.9.0':
+    resolution: {integrity: sha512-TvAVMfwtVv61hsPrRfB9ehgzSjX6DaAi1ZRAnpg8xFjzaXhzhEfbO0PhBRm3ecSv1azDuO2kBuyQHh2/z7G4YQ==}
+    engines: {node: '>=18'}
 
   '@rolldown/pluginutils@1.0.0-rc.2':
     resolution: {integrity: sha512-izyXV/v+cHiRfozX62W9htOAvwMo4/bXKDrQ+vom1L1qRuexPock/7VZDAhnpHCLNejd3NJ6hiab+tO0D44Rgw==}
@@ -1923,6 +1930,8 @@ snapshots:
     dependencies:
       katex: 0.16.28
       react: 19.2.4
+
+  '@notionhq/client@5.9.0': {}
 
   '@rolldown/pluginutils@1.0.0-rc.2': {}
 
