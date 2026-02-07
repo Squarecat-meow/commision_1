@@ -24,7 +24,7 @@ function Card({
               alt={element.properties.제목.title[0].plain_text}
               className="w-full aspect-square absolute object-cover rounded-xl mask-b-from-0% bg-white"
             />
-            <div className="w-full aspect-square bg-white rounded-xl" />
+            <div className="w-full aspect-square bg-base-100 rounded-xl" />
           </div>
         )}
         <img src={element.cover?.external.url} />
