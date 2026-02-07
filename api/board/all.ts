@@ -10,6 +10,12 @@ export default async function handler(req, res) {
           direction: 'ascending',
         },
       ],
+      filter: {
+        property: '발행',
+        checkbox: {
+          equals: true,
+        },
+      },
     });
     res.status(200).json(boards.results);
   } catch (e) {
