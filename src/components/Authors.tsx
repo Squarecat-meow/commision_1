@@ -13,7 +13,10 @@ function Authors({ authors }: { authors: IPostList['author'] }) {
         ))}
       </div>
       {authors.map((el) => (
-        <span key={el.name} className="text-sm text-slate-600 ml-2">
+        <span
+          key={el.name}
+          className="text-sm text-slate-500 dark:text-slate-400 ml-2"
+        >
           {el.name}
         </span>
       ))}
