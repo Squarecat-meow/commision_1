@@ -3,13 +3,7 @@ import ky from 'ky';
 import type { IManagePageListProperties } from '../../dto/notion';
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import {
-  Loader2Icon,
-  PauseIcon,
-  PlayIcon,
-  SkipBackIcon,
-  SkipForwardIcon,
-} from 'lucide-react';
+import { Loader2Icon, PauseIcon, PlayIcon } from 'lucide-react';
 
 function MusicPlayer() {
   const [playing, setPlaying] = useState(true);
