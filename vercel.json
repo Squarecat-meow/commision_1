@@ -1,8 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "functions": {
-    "api/*.ts": {
-      "includeFiles": "_lib/**"
-    }
-  }
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
