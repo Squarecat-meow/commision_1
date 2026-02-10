@@ -20,14 +20,18 @@ function Card({
               {element.properties.제목.title[0].plain_text}
             </h1>
             <img
-              src={element.cover.external.url}
+              src={
+                element.cover.type === 'external'
+                  ? element.cover.external?.url
+                  : element.cover.file?.url
+              }
               alt={element.properties.제목.title[0].plain_text}
               className="w-full aspect-square absolute object-cover rounded-xl mask-b-from-0% bg-white"
             />
             <div className="w-full aspect-square bg-base-100 rounded-xl" />
           </div>
         )}
-        <img src={element.cover?.external.url} />
+        <img src={element.cover?.external?.url} />
       </figure>
       <div></div>
       <div></div>

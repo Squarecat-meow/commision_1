@@ -63,9 +63,12 @@ export interface IGuestbookData extends PageObjectResponse {
 
 interface IGalleryItem extends IPostMetadata {
   cover: {
-    type: 'external';
+    type: 'external' | 'file';
     external: {
       url: string;
-    };
+    } | null;
+    file: {
+      url: string;
+    } | null;
   };
 }
