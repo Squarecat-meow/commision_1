@@ -12,7 +12,7 @@ function PostListItem({ element }: { element: IPostMetadata }) {
       className="flex flex-col p-2 gap-2 not-last:border-b not-last:border-b-slate-500 grow"
     >
       <li>
-        <h1 className="text-3xl font-noto-serif font-bold">
+        <h1 className="text-xl lg:text-3xl font-noto-serif font-bold">
           {element.properties.제목.title[0].plain_text}
         </h1>
         <Authors authors={element.properties.작성자.people} />

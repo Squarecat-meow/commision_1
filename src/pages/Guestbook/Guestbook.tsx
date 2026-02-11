@@ -55,7 +55,7 @@ function Guestbook() {
       <h1 className="text-3xl font-noto-serif">방명록</h1>
       <div>
         <form
-          className="w-full grid grid-cols-6 gap-2"
+          className="w-full grid grid-cols-4 lg:grid-cols-6 gap-2"
           onSubmit={handleSubmit}
           onKeyDown={handleKeyDown}
         >
@@ -71,14 +71,17 @@ function Guestbook() {
           <input
             type="text"
             placeholder="내용 (140자까지)"
-            className="input col-span-4 w-full"
+            className="input col-span-3 lg:col-span-4 w-full"
             value={content}
             maxLength={140}
             required
             onChange={(e) => setContent(e.target.value)}
             disabled={loading}
           />
-          <button className="btn btn-primary" type="submit">
+          <button
+            className="btn btn-primary col-span-full lg:col-span-1"
+            type="submit"
+          >
             제출
           </button>
         </form>

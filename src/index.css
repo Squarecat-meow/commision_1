@@ -14,3 +14,8 @@
   --color-character-red: #800001;
   --color-background: #c3c3c3;
 }
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 1001 !important;
+}

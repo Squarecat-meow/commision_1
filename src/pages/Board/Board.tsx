@@ -38,7 +38,7 @@ function Board() {
   return (
     <main className="flex flex-col gap-2 h-full">
       <>
-        <nav>
+        <nav className="flex">
           {categories.map((el) => (
             <button
               key={el}

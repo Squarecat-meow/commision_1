@@ -8,10 +8,11 @@ function Card({
   onClick: () => void;
 }) {
   return (
-    <button
+    <label
       key={element.id}
       className="hover-3d cursor-pointer"
       onClick={onClick}
+      htmlFor="picture-modal"
     >
       <figure className="w-full aspect-square">
         {element.cover && (
@@ -41,7 +42,7 @@ function Card({
       <div></div>
       <div></div>
       <div></div>
-    </button>
+    </label>
   );
 }
 

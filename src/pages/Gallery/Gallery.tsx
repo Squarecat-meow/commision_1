@@ -11,6 +11,7 @@ import type { IGalleryItem } from '../../../dto/notion';
 
 function Gallery() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, isLoading, isError, error } = useQuery<IGalleryItem[]>({
     queryKey: ['galleries'],
     queryFn: () => ky.get('/api/gallery/all').json(),
@@ -34,43 +35,58 @@ function Gallery() {
 
   const handleClick = (id: string) => {
     setSelectedId(id);
-    const modal = document.getElementById('picture-modal') as HTMLDialogElement;
-    modal.showModal();
   };
 
   return (
     <>
-      <main className="w-full grow grid grid-cols-3 gap-4">
+      <main className="w-full grow grid grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((el) => (
           <Card element={el} key={el.id} onClick={() => handleClick(el.id)} />
         ))}
       </main>
       {createPortal(
-        <dialog id="picture-modal" className="modal">
-          <div className="modal-box w-1/2 max-w-2/3">
-            {!isGalleryLoading && galleryDetail ? (
-              <>
-                <h3 className="font-bold text-lg">
-                  {galleryDetail.metadata?.properties.제목.title[0].plain_text}
-                </h3>
-                <NotionRenderer
-                  recordMap={galleryDetail.recordMap}
-                  darkMode={isDarkMode}
-                />
-              </>
-            ) : galleryDetailError ? (
-              <h1 className="text-xl font-bold">
-                {galleryDetailError?.message}
-              </h1>
-            ) : (
-              <Loader2Icon className="animate-spin" />
-            )}
+        <>
+          <input
+            type="checkbox"
+            id="picture-modal"
+            className="modal-toggle"
+            checked={isModalOpen}
+            onChange={(e) => setIsModalOpen(e.target.checked)}
+          />
+          <div className="modal" role="dialog">
+            <div className="modal-box m-4 lg:w-1/2 lg:max-w-2/3">
+              {!isGalleryLoading && galleryDetail ? (
+                <>
+                  <button
+                    className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 z-10"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    ✕
+                  </button>
+                  <div className="relative">
+                    <h3 className="font-bold text-lg">
+                      {
+                        galleryDetail.metadata?.properties.제목.title[0]
+                          .plain_text
+                      }
+                    </h3>
+                    <NotionRenderer
+                      recordMap={galleryDetail.recordMap}
+                      darkMode={isDarkMode}
+                    />
+                  </div>
+                </>
+              ) : galleryDetailError ? (
+                <h1 className="text-xl font-bold">
+                  {galleryDetailError?.message}
+                </h1>
+              ) : (
+                <Loader2Icon className="animate-spin" />
+              )}
+            </div>
           </div>
-          <form method="dialog" className="modal-backdrop">
-            <button>close</button>
-          </form>
-        </dialog>,
-        document.getElementById('portal') as HTMLDivElement,
+        </>,
+        document.body,
       )}
     </>
   );
