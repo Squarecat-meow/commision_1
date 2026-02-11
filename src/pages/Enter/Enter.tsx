@@ -33,7 +33,10 @@ function Enter() {
   return (
     <main className="min-h-screen flex flex-col justify-center items-center gap-6">
       {isLoading ? (
-        <LoadingBar value={percentage * 100} />
+        <>
+          <h1 className="text-center font-beau-rivage text-5xl">Loading...</h1>
+          <LoadingBar value={percentage * 100} />
+        </>
       ) : (
         <div className="grid place-items-center">
           <img src="/sd.png" alt="입장 화면 페어 SD 캐릭터" />
