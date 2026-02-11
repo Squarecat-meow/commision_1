@@ -16,7 +16,7 @@ function Enter() {
       <img
         src="/enter_bg.png"
         alt="입장 화면 배경"
-        className="fixed inset-0 w-screen h-screen -z-[1] opacity-60 pointer-events-none"
+        className="fixed inset-0 object-cover w-screen h-screen -z-[1] opacity-60 pointer-events-none"
       />
     </main>
   );
